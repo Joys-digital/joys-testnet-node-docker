@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  node:
+    container_name: joys_test
+    build: node
+    restart: always
+    entrypoint: /root/start.sh
+    volumes:
+      - geth_data:/root/node:rw
+    ports:
+      - "32101:32101"
+      - "32101:32101/udp"
+      - "8545:8545"
+    stdin_open: true
+    tty: true
+
+volumes:
+    geth_data:
+      driver: local
